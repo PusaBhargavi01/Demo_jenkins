@@ -2,6 +2,7 @@ package in.amazon.JenkinsDemo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,13 +13,25 @@ public class VerifyTitleTest {
 	
 	@BeforeTest
 	public void launchApplication() {
-		//1)Open the Browser
-		 driver = new ChromeDriver();//Class object = new Class()
-		
-		//2)Naviagte to application 
-		//object.method()
-		driver.get("https://facebook.com");
-		
+		String os = System.getProperty("os.name").toLowerCase();
+
+		if (os.contains("win")){			
+
+			driver = new ChromeDriver();
+
+		}
+
+		    
+
+		else if (os.contains("nix") || os.contains("aix") || os.contains("nux")){
+
+			ChromeOptions options = new ChromeOptions();
+
+			options.addArguments("--headless");			
+
+			driver = new ChromeDriver(options);
+
+		}
 	}
 	
 	@Test
