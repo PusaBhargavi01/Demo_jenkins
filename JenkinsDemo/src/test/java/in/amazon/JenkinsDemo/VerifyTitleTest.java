@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class VerifyTitle {
+public class VerifyTitleTest {
 	WebDriver driver;
 	
 	@BeforeTest
